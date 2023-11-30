@@ -9,7 +9,6 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      // Assuming you have a login endpoint on your server, adjust the URL accordingly
       const response = await axios.post('http://localhost:3000/api/users/signin', { email, password });
 
       if (response.status === 200) {
@@ -50,6 +49,11 @@ const Login = () => {
         <button type="button" onClick={handleLogin}>
           Login
         </button>
+
+        {/* Registration Button */}
+        <Link to="/register">
+          <button type="button">Register</button>
+        </Link>
       </form>
     </div>
   );
