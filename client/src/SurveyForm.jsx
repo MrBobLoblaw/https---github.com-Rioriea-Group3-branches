@@ -1,16 +1,18 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import NavigationBar from './NavigationBar'
 
 const SurveyForm = () => {
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    // You can send the data to your server or perform other actions here
+    // send the data to your server or perform other actions here
   };
 
   return (
     <div>
+      <NavigationBar />
       <h2>Student Survey</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* School Name */}

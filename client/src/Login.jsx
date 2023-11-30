@@ -1,15 +1,27 @@
-// Login.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Add your login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+  const handleLogin = async () => {
+    try {
+      // Assuming you have a login endpoint on your server, adjust the URL accordingly
+      const response = await axios.post('http://localhost:3000/api/users/signin', { email, password });
+
+      if (response.status === 200) {
+        console.log('Login successful');
+        // Uncomment the following line to redirect to the Homepage after successful login
+        navigate('/homepage');
+      } else {
+        console.log('Login failed');
+      }
+    } catch (error) {
+      console.error('Error during login:', error.message);
+    }
   };
 
   return (
@@ -38,11 +50,6 @@ const Login = () => {
         <button type="button" onClick={handleLogin}>
           Login
         </button>
-
-        {/* Register Button */}
-        <Link to="/register">
-          <button type="button">Register</button>
-        </Link>
       </form>
     </div>
   );

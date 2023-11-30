@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
-  // State variables to store form data
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post('/api/signup', { name, email, password })
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-  };
 
-  // Function to handle form submission
-  const handleSignup = () => {
-    // Perform your registration logic here
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
+    // Send a POST request to the server to store the account details
+    axios
+      .post('http://localhost:3000/api/users', { name, email, password })
+      .then((result) => {
+        console.log('Registration successful:', result.data);
+        // Perform any additional actions after successful registration
+      })
+      .catch((err) => {
+        console.error('Registration error:', err);
+        // Handle registration error (e.g., display an error message)
+      });
   };
 
   return (
@@ -56,12 +55,10 @@ const Signup = () => {
         />
 
         {/* Register Button */}
-        <button type="button" onClick={handleSignup}>
-          Register
-        </button>
+        <button type="submit">Register</button>
 
         {/* Login Button */}
-        <Link to="/login">
+        <Link to="/">
           <button type="button">Go to Login</button>
         </Link>
       </form>
