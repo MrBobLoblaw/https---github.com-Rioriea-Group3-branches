@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.route('/api/users/signin').post(userCtrl.signin);
 
-// Define routes for CRUD operations
 router.route('/api/users')
   .get(userCtrl.list)
   .post(userCtrl.create);
