@@ -1,13 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import NavigationBar from './NavigationBar';  // Assuming you have a NavigationBar component
 import { useForm } from 'react-hook-form';
-import NavigationBar from './NavigationBar'
 
 const SurveyForm = () => {
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
 
+  const [schoolName, setSchoolName] = useState('');
+  const [onlineClassesRating, setOnlineClassesRating] = useState('');
+  const [inPersonClassesRating, setInPersonClassesRating] = useState('');
+  const [productivityRating, setProductivityRating] = useState('');
+
   const onSubmit = (data) => {
     console.log(data);
-    // send the data to your server or perform other actions here
+
+    // Additional logic if needed before sending the data to the server
+
+    const surveyData = {
+      schoolName: data.schoolName,
+      onlineClassesRating: data.onlineClassesRating,
+      inPersonClassesRating: data.inPersonClassesRating,
+      productivityRating: data.productivityRating,
+    };
+
+    const backendUrl = 'http://localhost:3000';
+
+    // Send a POST request to the server to store the survey details
+    axios
+      .post(`${backendUrl}/surveys/submit-survey`, surveyData)
+      .then((result) => {
+        console.log('Survey submitted successfully:', result.data);
+        // Perform any additional actions after successful submission
+      })
+      .catch((err) => {
+        console.error('Survey submission error:', err);
+        // Handle submission error (e.g., display an error message)
+      });
   };
 
   return (

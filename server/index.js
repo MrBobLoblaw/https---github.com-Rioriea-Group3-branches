@@ -1,9 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
 const cors = require('cors');
 const UserRoutes = require('./routes/userRoutes');
-const jwt = require('jsonwebtoken')
+const SurveyRoutes = require('./routes/surveyRoutes'); // Import the survey routes
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -26,6 +25,7 @@ db.once('open', () => {
 });
 
 app.use('/', UserRoutes);
+app.use('/surveys', SurveyRoutes); // Mount the survey routes under '/surveys'
 
 app.get('/', (req, res) => {
   res.send("Welcome to Student Survey");
