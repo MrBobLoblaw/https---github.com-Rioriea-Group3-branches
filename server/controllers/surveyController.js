@@ -26,7 +26,6 @@ const list = async (req, res) => {
 };
 
 const read = (req, res) => {
-  req.profile.salt = undefined;
   return res.json(req.profile);
 };
 
@@ -36,7 +35,6 @@ const update = async (req, res) => {
     survey = _.extend(survey, req.body); // Use _.extend from lodash
     survey.updated = Date.now();
     await survey.save();
-    survey.salt = undefined;
     res.json(survey);
   } catch (err) {
     return res.status(400).json({
@@ -49,7 +47,6 @@ const remove = async (req, res) => {
   try {
     let survey = req.profile;
     let deletedSurvey = await survey.remove();
-    deletedSurvey.salt = undefined;
     res.json(deletedSurvey);
   } catch (err) {
     return res.status(400).json({
@@ -58,8 +55,25 @@ const remove = async (req, res) => {
   }
 };
 
+const surveyByID = async (req, res, next, id) => { 
+  try {
+    let survey = await Survey.findById(id) 
+  if (!survey)
+    return res.status('400').json({ 
+      error: "Survey not found"
+    })
+    req.profile = survey 
+    next()
+  } catch (err) {
+    return res.status('400').json({ 
+      error: "Could not retrieve survey"
+    }) 
+  }
+}
+
 module.exports = {
   submitSurvey,
+  surveyByID,
   list,
   read,
   update,

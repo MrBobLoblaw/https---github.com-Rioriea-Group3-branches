@@ -26,6 +26,24 @@ function UserProfile() {
       .catch((err) => console.log(err));
   }, []);
 
+  function onRemove(_id) {
+    console.log(_id);
+
+    const backendUrl = 'http://localhost:3000';
+
+    // Send a POST request to the server to store the survey details
+    axios
+      .delete(`${backendUrl}/api/surveys/:${_id}`)
+      .then((result) => {
+        console.log('Survey deletion successfully:', result.data);
+        // Perform any additional actions after successful submission
+      })
+      .catch((err) => {
+        console.error('Survey deletion error:', err);
+        // Handle submission error (e.g., display an error message)
+      });
+  };
+
   return (
     <div>
       <NavigationBar />
@@ -50,7 +68,7 @@ function UserProfile() {
               <h3>{survey.productivityRating}</h3>
               <button id="Read">View</button>
               <button id="Update">Edit</button>
-              <button id="Delete">Remove</button>
+              <button id="Delete" onClick={onRemove(survey._id)}>Remove</button>
             </div>
           </li>
         ))
