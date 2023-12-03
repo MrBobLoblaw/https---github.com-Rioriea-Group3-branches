@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const surveyCtrl = require('../controllers/surveyController.js');
 
 const router = express.Router();
@@ -15,5 +15,15 @@ router.route('/api/surveys/:surveyId')
 
 // Middleware to handle surveyId parameter
 router.param('surveyId', surveyCtrl.surveyByID);
+
+module.exports = router;*/
+
+const express = require('express');
+const surveyController = require('../controllers/surveyController');
+
+const router = express.Router();
+
+// Define routes related to surveys
+router.post('/submit-survey', surveyController.submitSurvey);
 
 module.exports = router;

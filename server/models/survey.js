@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -39,4 +39,17 @@ SurveySchema.methods = {
   },
 };
 
-module.exports = mongoose.model('Survey', SurveySchema);
+module.exports = mongoose.model('Survey', SurveySchema);*/
+
+const mongoose = require('mongoose');
+
+const surveySchema = new mongoose.Schema({
+  schoolName: String,
+  onlineClassesRating: String,
+  inPersonClassesRating: String,
+  productivityRating: String,
+});
+
+const Survey = mongoose.model('Survey', surveySchema);
+
+module.exports = Survey;

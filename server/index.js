@@ -1,9 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
 const cors = require('cors');
 const UserRoutes = require('./routes/userRoutes');
-const jwt = require('jsonwebtoken')
+const SurveyRoutes = require('./routes/surveyRoutes'); // Import the survey routes
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -13,7 +12,8 @@ app.use(express.json());
 
 
 // MongoDB configuration
-mongoose.connect("mongodb+srv://musketeersgroup408:musk229408@cluster0.pf9v9q7.mongodb.net/Surveyproject?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://divern:LRhRKr3g6iooZVqV@cluster0.ahxzaxj.mongodb.net/surveydb?retryWrites=true&w=majority", {
+//mongoose.connect("mongodb+srv://musketeersgroup408:musk229408@cluster0.pf9v9q7.mongodb.net/Surveyproject?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -26,6 +26,7 @@ db.once('open', () => {
 });
 
 app.use('/', UserRoutes);
+app.use('/surveys', SurveyRoutes); // Mount the survey routes under '/surveys'
 
 app.get('/', (req, res) => {
   res.send("Welcome to Student Survey");
