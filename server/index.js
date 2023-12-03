@@ -26,7 +26,7 @@ db.once('open', () => {
 });
 
 app.use('/', UserRoutes);
-app.use('/surveys', SurveyRoutes); // Mount the survey routes under '/surveys'
+app.use('/', SurveyRoutes); // Mount the survey routes under '/surveys'
 
 app.get('/', (req, res) => {
   res.send("Welcome to Student Survey");

@@ -26,34 +26,6 @@ function UserProfile() {
       .catch((err) => console.log(err));
   }, []);
 
-  //let userSurveys = [];
-    //users.forEach((user, uIndex) => {
-      //if (user.id) { // If user id matches
-        /*surveys.forEach((survey, sIndex) => {
-          //if (survey.userId == user.id) { // If survey's userId matches user's id
-            userSurveys.push(
-              <li>
-                <div>
-                  <h3>{survey.schoolName + " (" + sIndex + ")"}</h3>
-                  <h3>{survey.onlineClassesRating + " (" + sIndex + ")"}</h3>
-                  <h3>{survey.inPersonClassesRating + " (" + sIndex + ")"}</h3>
-                  <h3>{survey.productivityRating + " (" + sIndex + ")"}</h3>
-                  <button id="Read">View</button>
-                  <button id="Update">Edit</button>
-                  <button id="Delete">Remove</button>
-                </div>
-              </li>
-            );
-            
-          //}
-      
-        });*/
-    //});
-
-  //};
-
-  //updateSurveyList;
-
   return (
     <div>
       <NavigationBar />
