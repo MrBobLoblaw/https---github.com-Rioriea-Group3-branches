@@ -26,10 +26,7 @@ function UserProfile() {
       .catch((err) => console.log(err));
   }, []);
 
-  let userSurveys = [];
-  const updateSurveyList = (data) => {
-
-    userSurveys = [];
+  //let userSurveys = [];
     //users.forEach((user, uIndex) => {
       //if (user.id) { // If user id matches
         /*surveys.forEach((survey, sIndex) => {
@@ -51,13 +48,9 @@ function UserProfile() {
           //}
       
         });*/
-
-        // Send a POST request to the server to store the survey details
-    //axios .get(`${backendUrl}/surveys/submit-survey`, surveyData) .then((result) => { console.log('Survey retrieved successfully:', result.data); }) .catch((err) => { console.error('Survey retrieval error:', err); });
-      //}
     //});
 
-  };
+  //};
 
   //updateSurveyList;
 
