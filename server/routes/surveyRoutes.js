@@ -9,11 +9,10 @@ router.post('/submit-survey', surveyCtrl.submitSurvey);
 router.route('/api/surveys')
   .get(surveyCtrl.list)
 
+router.param('surveyID', surveyCtrl.surveyByID);
 router.route('/api/surveys/:surveyID')
   .get(surveyCtrl.read)
   .put(surveyCtrl.update)
   .delete(surveyCtrl.remove);
-
-router.param('surveyID', surveyCtrl.surveyByID);
 
 module.exports = router;

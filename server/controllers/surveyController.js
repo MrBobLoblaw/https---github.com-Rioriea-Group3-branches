@@ -56,12 +56,13 @@ const remove = async (req, res) => {
 };
 
 const surveyByID = async (req, res, next, id) => { 
+  console.log(id)
   try {
     let survey = await Survey.findById(id) 
-  if (!survey)
-    return res.status('400').json({ 
-      error: "Survey not found"
-    })
+    if (!survey)
+      return res.status('400').json({ 
+        error: "Survey not found"
+      })
     req.profile = survey 
     next()
   } catch (err) {
