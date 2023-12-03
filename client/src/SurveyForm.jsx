@@ -27,7 +27,7 @@ const SurveyForm = () => {
 
     // Send a POST request to the server to store the survey details
     axios
-      .post(`${backendUrl}/surveys/submit-survey`, surveyData)
+      .post(`${backendUrl}/surveys/create`, surveyData)
       .then((result) => {
         console.log('Survey submitted successfully:', result.data);
         // Perform any additional actions after successful submission

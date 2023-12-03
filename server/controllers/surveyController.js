@@ -2,7 +2,7 @@ const Survey = require('../models/survey.js');
 const _ = require('lodash');
 const errorHandler = require('./error.controller.js');
 
-const submitSurvey = async (req, res) => {
+const create = async (req, res) => {
   try {
     const surveyData = req.body;
     const newSurvey = new Survey(surveyData);
@@ -73,7 +73,7 @@ const surveyByID = async (req, res, next, id) => {
 }
 
 module.exports = {
-  submitSurvey,
+  create,
   surveyByID,
   list,
   read,
