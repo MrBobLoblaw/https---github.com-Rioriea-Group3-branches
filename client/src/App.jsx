@@ -15,7 +15,7 @@ function App() {
         <Route path="/register" element={<Signup />} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/survey" element={<SurveyForm />} />
-        <Route path="/profile" element={<UserProfile/>} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );

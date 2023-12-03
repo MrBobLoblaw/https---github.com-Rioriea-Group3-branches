@@ -83,7 +83,6 @@ function UserProfile() {
           </li>
         ))
       }
-      <ul>{userSurveys}</ul>
     </div>
   );
 }
